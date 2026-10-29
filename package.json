@@ -1,0 +1,14 @@
+{
+  "name": "trishita",
+  "version": "1.0.0",
+  "description": "An enterprise-grade, high-performance landing page and interactive neural telemetry cockpit for **Vitals** (inspired by Pison.com). Vitals decodes non-invasive neuromuscular wristband hardware telemetry, real-time cognitive state tracking, and enterprise brain-muscle interface (BMI) telemetric streams.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "mongodb": "^7.7.0"
+  }
+}

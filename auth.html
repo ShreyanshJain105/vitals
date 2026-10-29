@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitals — Sign In & Register | Enterprise Biopotential Telemetry</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0a0a0c',
+            panel: '#101116',
+            cyanCore: '#00f0ff',
+            violetCore: '#8b5cf6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            outfit: ['Outfit', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#0a0a0c] text-slate-100 min-h-screen flex flex-col justify-between cyber-grid-bg relative selection:bg-cyan-500/20 selection:text-cyan-300">
+
+  <!-- Ambient glow backdrop -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-cyan-500/10 via-violet-600/5 to-transparent blur-[140px] pointer-events-none -z-10"></div>
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 bg-black/40 backdrop-blur-md px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-500/20 via-violet-500/20 to-transparent border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" class="stroke-cyan-400" />
+            <circle cx="12" cy="12" r="3" class="fill-cyan-400/80" />
+          </svg>
+        </div>
+        <span class="font-outfit text-xl font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">VITALS</span>
+      </a>
+
+      <div class="flex items-center gap-2 font-mono text-xs text-slate-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 beacon-active"></span>
+        <span>MongoDB: <strong class="text-white">mongodb://127.0.0.1:27017</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Auth Card Container -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-6 my-8">
+    <div class="w-full max-w-md p-6 sm:p-8 rounded-3xl bg-panel border border-slate-800 shadow-2xl relative glow-cyan-sm">
+      
+      <!-- Brand Eyebrow -->
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800 font-mono text-xs">
+        <div class="flex items-center gap-2 text-cyan-400">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span>ENTERPRISE PORTAL</span>
+        </div>
+        <span class="text-slate-500">TLS 1.3 SECURE</span>
+      </div>
+
+      <h1 class="font-outfit text-2xl sm:text-3xl font-extrabold text-white mb-2">Access Vitals Cockpit</h1>
+      <p class="text-slate-400 text-xs font-sans mb-6">
+        Log in to pair your Vitals Band wearable and stream continuous neuromuscular, cardiovascular & mental health telemetry.
+      </p>
+
+      <!-- Tabs -->
+      <div class="flex items-center p-1 rounded-xl bg-slate-900 border border-slate-800 mb-6">
+        <button id="tab-login" class="flex-1 py-2 rounded-lg font-mono text-xs font-semibold bg-cyanCore text-black shadow-md transition-all">
+          SIGN IN
+        </button>
+        <button id="tab-register" class="flex-1 py-2 rounded-lg font-mono text-xs font-semibold text-slate-400 hover:text-white transition-all">
+          CREATE ACCOUNT
+        </button>
+      </div>
+
+      <!-- Error Alert Box -->
+      <div id="auth-error-box" class="hidden mb-4 p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 font-mono text-xs"></div>
+
+      <!-- Login Form -->
+      <form id="form-login" class="space-y-4 font-mono text-xs">
+        <div>
+          <label class="block text-slate-300 mb-1">ACCOUNT EMAIL</label>
+          <input type="email" id="login-email" required placeholder="operator@vitals.enterprise" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">PASSWORD</label>
+          <input type="password" id="login-password" required placeholder="••••••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors">
+        </div>
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3 rounded-xl font-mono text-xs font-bold tracking-wider text-black bg-cyanCore hover:bg-cyan-300 transition-all duration-300 glow-cyan-sm active:scale-98">
+            AUTHENTICATE & ENTER COCKPIT
+          </button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" class="hidden space-y-4 font-mono text-xs">
+        <div>
+          <label class="block text-slate-300 mb-1">FULL NAME</label>
+          <input type="text" id="reg-name" required placeholder="Major Alex Thorne" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">WORK EMAIL</label>
+          <input type="email" id="reg-email" required placeholder="alex.thorne@defense.aero" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">PASSWORD</label>
+          <input type="password" id="reg-password" required placeholder="Minimum 8 characters" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 mb-1">ORGANIZATION</label>
+            <input type="text" id="reg-org" placeholder="Defense Flight Labs" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">SECTOR</label>
+            <select id="reg-sector" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white focus:outline-none focus:border-cyan-400 transition-colors">
+              <option>Aerospace & Defense</option>
+              <option>Robotic Microsurgery</option>
+              <option>Spatial XR Engineering</option>
+              <option>Personal Biometrics</option>
+            </select>
+          </div>
+        </div>
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3 rounded-xl font-mono text-xs font-bold tracking-wider text-black bg-cyanCore hover:bg-cyan-300 transition-all duration-300 glow-cyan-sm active:scale-98">
+            CREATE VITALS ACCOUNT
+          </button>
+        </div>
+      </form>
+
+      <!-- Back to Landing Link -->
+      <div class="mt-6 text-center">
+        <a href="index.html" class="font-mono text-xs text-slate-400 hover:text-cyan-400 transition-colors">
+          &larr; Return to Telemetry Landing Page
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-black/60 py-4 text-center font-mono text-[11px] text-slate-500">
+    &copy; 2026 Vitals Neural Systems. Local MongoDB instance: mongodb://127.0.0.1:27017/vitals_db
+  </footer>
+
+  <script>
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const formLogin = document.getElementById('form-login');
+    const formRegister = document.getElementById('form-register');
+    const errorBox = document.getElementById('auth-error-box');
+
+    tabLogin.addEventListener('click', () => {
+      tabLogin.className = 'flex-1 py-2 rounded-lg font-mono text-xs font-semibold bg-cyanCore text-black shadow-md transition-all';
+      tabRegister.className = 'flex-1 py-2 rounded-lg font-mono text-xs font-semibold text-slate-400 hover:text-white transition-all';
+      formLogin.classList.remove('hidden');
+      formRegister.classList.add('hidden');
+      errorBox.classList.add('hidden');
+    });
+
+    tabRegister.addEventListener('click', () => {
+      tabRegister.className = 'flex-1 py-2 rounded-lg font-mono text-xs font-semibold bg-cyanCore text-black shadow-md transition-all';
+      tabLogin.className = 'flex-1 py-2 rounded-lg font-mono text-xs font-semibold text-slate-400 hover:text-white transition-all';
+      formRegister.classList.remove('hidden');
+      formLogin.classList.add('hidden');
+      errorBox.classList.add('hidden');
+    });
+
+    formLogin.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.add('hidden');
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Authentication failed');
+
+        localStorage.setItem('vitals_auth_token', data.token);
+        window.location.href = 'index.html#personal-health-dashboard';
+      } catch (err) {
+        errorBox.innerText = err.message;
+        errorBox.classList.remove('hidden');
+      }
+    });
+
+    formRegister.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.add('hidden');
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+      const organization = document.getElementById('reg-org').value;
+      const sector = document.getElementById('reg-sector').value;
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password, organization, sector })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Registration failed');
+
+        localStorage.setItem('vitals_auth_token', data.token);
+        window.location.href = 'index.html#personal-health-dashboard';
+      } catch (err) {
+        errorBox.innerText = err.message;
+        errorBox.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
