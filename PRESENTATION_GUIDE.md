@@ -1,4 +1,5 @@
 # Vitals — Master Presentation Guide & Teacher Walkthrough
+**Developed & Presented by Trishita Kanodia — Lead Architect & Creative Technologist**
 
 This guide is designed to help you deliver a high-scoring presentation to your teacher, professor, or project evaluation committee. It includes an elevator pitch, a step-by-step live demo script, technical explanations, and answers to challenging questions.
 
@@ -10,11 +11,13 @@ This guide is designed to help you deliver a high-scoring presentation to your t
 >
 > *Today, consumer wearables like the Apple Watch or Fitbit rely predominantly on optical photoplethysmography (PPG). While good for resting heart rates, optical sensors suffer from severe motion artifacts, skin pigmentation variance, and a fatal delay of 200 to 500 milliseconds—making them incapable of pre-symptomatic cognitive tracking or emergency intervention.*
 >
-> *I have architected and implemented **Vitals**—an enterprise-grade non-invasive neuromuscular and cardiovascular telemetry platform inspired by military and clinical architectures (such as Pison.com).*
+> *I, Trishita Kanodia, have architected and implemented **Vitals**—an enterprise-grade AI neural and cardiovascular telemetry platform inspired by cutting-edge fintech & biomedical interfaces (such as Dribbble AI Financial Intelligence & Pison.com).*
 >
 > *Vitals captures biopotential microvolts directly at the wrist at a blazing **2,048 Hz sampling rate**. It decodes alpha-motor unit action potentials (MUAP) with **sub-5ms latency**, decomposes brain-muscle wave spectrums ($\delta, \theta, \alpha, \beta, \gamma$), generates 60 FPS live electrocardiograms (EKG), tracks cognitive fatigue hours before symptoms appear, and includes a **life-saving Emergency Family SOS system** that automatically detects Blood Pressure spikes or sudden collapse drops and dispatches cellular alerts with live GPS coordinates to family members.*
 >
-> *Everything is full-stack, powered by a Node.js engine and storing real-time data into a local **MongoDB Community Database**.*
+> *Furthermore, Vitals features a distinct dual experience: a stunning, high-converting public AI intelligence landing page for prospective clients, and a dedicated, full-screen executive **Telemetry Cockpit Dashboard** for authenticated users.*
+>
+> *Everything is full-stack, powered by a Node.js engine and storing real-time data into our local **MongoDB Community Database (`mongodb://127.0.0.1:27017`)**.*
 >
 > *Let me demonstrate the live system."*
 
@@ -58,7 +61,7 @@ Follow this exact sequence on your screen while speaking to your teacher:
 
 ---
 
-### Step 3: User Authentication & Local MongoDB Database
+### Step 3: User Authentication & Instant Switch to Dedicated Cockpit Dashboard
 - **Action**: Click **"SIGN IN"** in the top navigation header.
 - **What to say**:
   > *"Vitals features a complete security and session layer. Passwords are never stored in plaintext—they are cryptographically salted and hashed using Node's `crypto.scryptSync`. Let's create an account for a flight surgeon or test pilot."*
@@ -69,7 +72,7 @@ Follow this exact sequence on your screen while speaking to your teacher:
   - Organization: `Aerospace Medicine Squadron`
 - Click **"REGISTER WITH LOCAL MONGODB"**.
 - **What to say**:
-  > *"Upon registration, the record is immediately committed to our local MongoDB Community database in the `users` collection, a secure JWT token is stored, and the navigation bar updates with our user avatar and initials."*
+  > *"Notice what just happened: upon authentication, the public marketing page disappears, and we are seamlessly transitioned into a dedicated, enterprise-grade **Telemetry Cockpit Dashboard**! The navigation bar adapts to cockpit mode, and a top banner allows us to preview the public marketing site anytime and return with one click."*
 
 ---
 
@@ -84,7 +87,7 @@ Follow this exact sequence on your screen while speaking to your teacher:
   > 2. Running dry Ag/AgCl impedance self-calibration—17.8 kΩ confirms ideal skin contact with zero conductive gel needed
   > 3. Synchronizing the 2,048 Hz biopotential clock
   > 4. Linking the device to our MongoDB user record."*
-- **Action**: The modal closes and smoothly scrolls to the **Personal Health Telemetry Dashboard**.
+- **Action**: The modal closes and our **Dedicated Health & Telemetry Cockpit Dashboard** activates live 60 FPS streaming.
 
 ---
 

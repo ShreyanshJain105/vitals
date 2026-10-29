@@ -148,8 +148,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800/80 bg-black/60 py-4 text-center font-mono text-[11px] text-slate-500">
-    &copy; 2026 Vitals Neural Systems. Local MongoDB instance: mongodb://127.0.0.1:27017/vitals_db
+  <footer class="border-t border-slate-800/80 bg-black/60 py-6 text-center font-mono text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span class="font-outfit font-bold text-white">Developed by Trishita Kanodia</span>
+        <span class="text-slate-600">&bull;</span>
+        <span class="text-slate-500">Lead Architect</span>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        &copy; 2026 Vitals Neural Systems. Local MongoDB: mongodb://127.0.0.1:27017/vitals_db
+      </div>
+    </div>
   </footer>
 
   <script>
@@ -191,7 +201,7 @@
         if (!res.ok) throw new Error(data.error || 'Authentication failed');
 
         localStorage.setItem('vitals_auth_token', data.token);
-        window.location.href = 'index.html#personal-health-dashboard';
+        window.location.href = 'index.html';
       } catch (err) {
         errorBox.innerText = err.message;
         errorBox.classList.remove('hidden');
@@ -217,7 +227,7 @@
         if (!res.ok) throw new Error(data.error || 'Registration failed');
 
         localStorage.setItem('vitals_auth_token', data.token);
-        window.location.href = 'index.html#personal-health-dashboard';
+        window.location.href = 'index.html';
       } catch (err) {
         errorBox.innerText = err.message;
         errorBox.classList.remove('hidden');

@@ -402,9 +402,18 @@ All data is stored in the `vitals_db` database on your local MongoDB instance:
 
 ---
 
+## 👩‍💻 Lead Architect & Engineering Credits
+
+- **Principal Architect & Creative Technologist**: **Trishita Kanodia**
+- **Design Inspiration**: [Dribbble — AI Financial & Biometric Intelligence Website (Shot 27848306)](https://dribbble.com/shots/27848306-AI-Financial-Intelligence-Website) featuring gapless bento grid architecture, floating glassmorphic pill navigation, and continuous cybernetic obsidian visuals.
+- **Dedicated User Cockpit**: Distinct logged-in enterprise dashboard view providing real-time cardiovascular EKG, 5-band frequency decomposition, automated blood pressure SOS safeguards, and direct MongoDB ingress streaming.
+
+---
+
 ## 📜 License & Compliance
 
 - **License**: MIT License
+- **Lead Developer**: **Trishita Kanodia**
 - **Compliance Pathways**: Designed following FDA 510(k) Pre-Market Notification pathways, HIPAA-compliant biometric encryption, ISO 13485 medical device quality management, and SOC2 Type II audit standards.
 
-Developed with precision for mission-critical enterprise telemetry.
+Developed with precision by **Trishita Kanodia** for mission-critical enterprise telemetry.

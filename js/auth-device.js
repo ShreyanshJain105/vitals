@@ -164,6 +164,104 @@ class VitalsAuthDeviceManager {
       if (e.target === this.pairingModal) this.closePairingModal();
       if (e.target === this.mongoHistoryModal) this.closeMongoHistoryModal();
     });
+
+    // View Routing Toggles
+    const btnPreviewPublic = document.getElementById('btn-preview-public');
+    if (btnPreviewPublic) {
+      btnPreviewPublic.addEventListener('click', () => this.togglePublicPreview(true));
+    }
+
+    const btnReturnCockpit = document.getElementById('btn-return-cockpit');
+    if (btnReturnCockpit) {
+      btnReturnCockpit.addEventListener('click', () => this.togglePublicPreview(false));
+    }
+
+    const navDashboardToggleBtn = document.getElementById('nav-dashboard-toggle-btn');
+    if (navDashboardToggleBtn) {
+      navDashboardToggleBtn.addEventListener('click', () => {
+        if (this.currentUser) {
+          this.showDashboardView();
+        } else {
+          this.openAuthModal('login');
+        }
+      });
+    }
+
+    const navViewPublicBtn = document.getElementById('nav-view-public-btn');
+    if (navViewPublicBtn) {
+      navViewPublicBtn.addEventListener('click', () => this.togglePublicPreview(true));
+    }
+  }
+
+  // ==========================================
+  // VIEW ROUTING: PUBLIC SITE VS AUTHENTICATED COCKPIT
+  // ==========================================
+
+  showDashboardView() {
+    const publicView = document.getElementById('view-public');
+    const dashboardView = document.getElementById('view-dashboard');
+    const previewBanner = document.getElementById('public-preview-banner');
+    const navDashboardBtn = document.getElementById('nav-dashboard-toggle-btn');
+    const navPublicLinks = document.getElementById('nav-public-links');
+    const navDashboardLinks = document.getElementById('nav-dashboard-links');
+
+    if (publicView) publicView.classList.add('view-hidden');
+    if (dashboardView) dashboardView.classList.remove('view-hidden');
+    if (previewBanner) previewBanner.classList.add('hidden');
+    if (navDashboardBtn) navDashboardBtn.classList.remove('hidden');
+    if (navPublicLinks) navPublicLinks.classList.add('hidden');
+    if (navDashboardLinks) navDashboardLinks.classList.remove('hidden');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 80);
+  }
+
+  showPublicView() {
+    const publicView = document.getElementById('view-public');
+    const dashboardView = document.getElementById('view-dashboard');
+    const previewBanner = document.getElementById('public-preview-banner');
+    const navDashboardBtn = document.getElementById('nav-dashboard-toggle-btn');
+    const navPublicLinks = document.getElementById('nav-public-links');
+    const navDashboardLinks = document.getElementById('nav-dashboard-links');
+
+    if (dashboardView) dashboardView.classList.add('view-hidden');
+    if (publicView) publicView.classList.remove('view-hidden');
+    if (previewBanner) previewBanner.classList.add('hidden');
+    if (navPublicLinks) navPublicLinks.classList.remove('hidden');
+    if (navDashboardLinks) navDashboardLinks.classList.add('hidden');
+
+    if (navDashboardBtn) {
+      if (this.currentUser) navDashboardBtn.classList.remove('hidden');
+      else navDashboardBtn.classList.add('hidden');
+    }
+
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 80);
+  }
+
+  togglePublicPreview(showPublic) {
+    const publicView = document.getElementById('view-public');
+    const dashboardView = document.getElementById('view-dashboard');
+    const previewBanner = document.getElementById('public-preview-banner');
+
+    if (showPublic) {
+      if (dashboardView) dashboardView.classList.add('view-hidden');
+      if (publicView) publicView.classList.remove('view-hidden');
+      if (previewBanner) previewBanner.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      if (publicView) publicView.classList.add('view-hidden');
+      if (dashboardView) dashboardView.classList.remove('view-hidden');
+      if (previewBanner) previewBanner.classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 80);
   }
 
   // ==========================================
@@ -338,6 +436,9 @@ class VitalsAuthDeviceManager {
       this.navUserAvatar.innerText = initials || 'V';
     }
 
+    // Switch view to dedicated enterprise cockpit dashboard
+    this.showDashboardView();
+
     // Connected device state
     if (this.currentUser.connectedDevice) {
       this.connectedDevice = this.currentUser.connectedDevice;
@@ -356,6 +457,7 @@ class VitalsAuthDeviceManager {
     if (this.navAuthBtn) this.navAuthBtn.classList.remove('hidden');
     if (this.navUserMenu) this.navUserMenu.classList.add('hidden');
     this.renderDeviceDisconnectedState();
+    this.showPublicView();
   }
 
   // ==========================================
