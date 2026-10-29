@@ -209,8 +209,15 @@ class VitalsAuthDeviceManager {
     if (dashboardView) dashboardView.classList.remove('view-hidden');
     if (previewBanner) previewBanner.classList.add('hidden');
     if (navDashboardBtn) navDashboardBtn.classList.remove('hidden');
-    if (navPublicLinks) navPublicLinks.classList.add('hidden');
-    if (navDashboardLinks) navDashboardLinks.classList.remove('hidden');
+    
+    if (navPublicLinks) {
+      navPublicLinks.classList.add('hidden');
+      navPublicLinks.classList.remove('lg:flex');
+    }
+    if (navDashboardLinks) {
+      navDashboardLinks.classList.remove('hidden');
+      navDashboardLinks.classList.add('lg:flex');
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
@@ -229,8 +236,15 @@ class VitalsAuthDeviceManager {
     if (dashboardView) dashboardView.classList.add('view-hidden');
     if (publicView) publicView.classList.remove('view-hidden');
     if (previewBanner) previewBanner.classList.add('hidden');
-    if (navPublicLinks) navPublicLinks.classList.remove('hidden');
-    if (navDashboardLinks) navDashboardLinks.classList.add('hidden');
+    
+    if (navDashboardLinks) {
+      navDashboardLinks.classList.add('hidden');
+      navDashboardLinks.classList.remove('lg:flex');
+    }
+    if (navPublicLinks) {
+      navPublicLinks.classList.remove('hidden');
+      navPublicLinks.classList.add('lg:flex');
+    }
 
     if (navDashboardBtn) {
       if (this.currentUser) navDashboardBtn.classList.remove('hidden');
@@ -246,16 +260,34 @@ class VitalsAuthDeviceManager {
     const publicView = document.getElementById('view-public');
     const dashboardView = document.getElementById('view-dashboard');
     const previewBanner = document.getElementById('public-preview-banner');
+    const navPublicLinks = document.getElementById('nav-public-links');
+    const navDashboardLinks = document.getElementById('nav-dashboard-links');
 
     if (showPublic) {
       if (dashboardView) dashboardView.classList.add('view-hidden');
       if (publicView) publicView.classList.remove('view-hidden');
       if (previewBanner) previewBanner.classList.remove('hidden');
+      if (navDashboardLinks) {
+        navDashboardLinks.classList.add('hidden');
+        navDashboardLinks.classList.remove('lg:flex');
+      }
+      if (navPublicLinks) {
+        navPublicLinks.classList.remove('hidden');
+        navPublicLinks.classList.add('lg:flex');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       if (publicView) publicView.classList.add('view-hidden');
       if (dashboardView) dashboardView.classList.remove('view-hidden');
       if (previewBanner) previewBanner.classList.add('hidden');
+      if (navPublicLinks) {
+        navPublicLinks.classList.add('hidden');
+        navPublicLinks.classList.remove('lg:flex');
+      }
+      if (navDashboardLinks) {
+        navDashboardLinks.classList.remove('hidden');
+        navDashboardLinks.classList.add('lg:flex');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
