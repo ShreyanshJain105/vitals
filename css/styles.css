@@ -1,22 +1,23 @@
 /* Vitals - Enterprise Neural Telemetry & Biopotential System Stylesheet */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --canvas-obsidian: #0a0a0c;
-  --panel-bg: #101116;
-  --panel-surface: #14161f;
-  --panel-elevated: #1a1c28;
+  --canvas-obsidian: #050508;
+  --panel-bg: #0c0e15;
+  --panel-surface: #10131d;
+  --panel-elevated: #161a27;
   --cyan-core: #00f0ff;
-  --cyan-glow: rgba(0, 240, 255, 0.35);
-  --cyan-dim: rgba(0, 240, 255, 0.12);
+  --mint-core: #00f5a0;
+  --cyan-glow: rgba(0, 240, 255, 0.4);
+  --mint-glow: rgba(0, 245, 160, 0.45);
   --violet-core: #8b5cf6;
-  --violet-glow: rgba(139, 92, 246, 0.35);
+  --violet-glow: rgba(139, 92, 246, 0.4);
   --emerald-core: #10b981;
   --amber-core: #f59e0b;
-  --crimson-core: #ef4444;
-  --slate-border: rgba(148, 163, 184, 0.12);
-  --slate-border-hover: rgba(0, 240, 255, 0.35);
+  --crimson-core: #ff3b5c;
+  --slate-border: rgba(255, 255, 255, 0.08);
+  --slate-border-hover: rgba(0, 245, 160, 0.4);
 }
 
 /* Base resets & typography */
@@ -28,7 +29,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--canvas-obsidian);
   color: #f1f5f9;
   overflow-x: hidden;
@@ -36,8 +37,16 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 240, 255, 0.25);
-  color: #00f0ff;
+  background: rgba(0, 245, 160, 0.25);
+  color: #00f5a0;
+}
+
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .font-outfit {
@@ -423,4 +432,155 @@ details[open] summary svg.faq-arrow {
   border: 1px solid rgba(0, 240, 255, 0.3);
   backdrop-filter: blur(10px);
 }
+
+/* ======================================================== */
+/* ZAJNO SIGNATURE AI FINANCIAL & TELEMETRY DESIGN SYSTEM   */
+/* ======================================================== */
+.btn-zajno-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #00f5a0 0%, #00f0ff 100%);
+  color: #050508;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 0 30px -5px rgba(0, 245, 160, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.btn-zajno-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 45px -4px rgba(0, 245, 160, 0.65), 0 10px 20px -5px rgba(0, 240, 255, 0.4);
+}
+
+.btn-zajno-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-zajno-primary .btn-arrow-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.btn-zajno-primary:hover .btn-arrow-icon {
+  transform: translateX(3px);
+}
+
+.btn-zajno-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-zajno-glass:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.zajno-card {
+  position: relative;
+  background: #090b11;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.75rem;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.8);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.zajno-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 160, 0.4), transparent);
+  pointer-events: none;
+}
+
+.zajno-card:hover {
+  border-color: rgba(0, 245, 160, 0.35);
+  box-shadow: 0 25px 60px -15px rgba(0, 245, 160, 0.15);
+  transform: translateY(-3px);
+}
+
+html.theme-bw .btn-zajno-primary {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+html.theme-bw .btn-zajno-glass {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.theme-bw .zajno-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06) !important;
+}
+
+html.theme-bw .zajno-card::before {
+  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.3), transparent) !important;
+}
+
+.zajno-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background: rgba(0, 245, 160, 0.08);
+  border: 1px solid rgba(0, 245, 160, 0.25);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #00f5a0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.zajno-badge-cyan {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.25);
+  color: #00f0ff;
+}
+
+.zajno-badge-coral {
+  background: rgba(255, 59, 92, 0.1);
+  border-color: rgba(255, 59, 92, 0.3);
+  color: #ff3b5c;
+}
+
 
