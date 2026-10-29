@@ -647,10 +647,10 @@ class VitalsAuthDeviceManager {
   renderDeviceConnectedState() {
     // Nav Status Pill
     if (this.navDeviceStatus) {
-      this.navDeviceStatus.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-950/50 border border-cyan-500/40 text-cyan-300 font-mono text-xs cursor-pointer hover:border-cyan-400 transition-colors shadow-sm';
+      this.navDeviceStatus.className = 'flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/50 text-cyan-300 font-mono text-[11px] cursor-pointer hover:border-cyan-400 transition-colors shadow-sm shrink-0 whitespace-nowrap';
       this.navDeviceStatus.innerHTML = `
-        <span class="w-2 h-2 rounded-full bg-cyan-400 beacon-active"></span>
-        <span>${this.connectedDevice ? this.connectedDevice.deviceId : 'VN1 BAND'} [CONNECTED]</span>
+        <span class="w-2 h-2 rounded-full bg-cyan-400 beacon-active shrink-0"></span>
+        <span class="whitespace-nowrap">${this.connectedDevice ? this.connectedDevice.deviceId : 'VN1 BAND'} [CONNECTED]</span>
       `;
     }
 
@@ -667,10 +667,10 @@ class VitalsAuthDeviceManager {
 
   renderDeviceDisconnectedState() {
     if (this.navDeviceStatus) {
-      this.navDeviceStatus.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-slate-400 font-mono text-xs cursor-pointer hover:border-slate-700 transition-colors';
+      this.navDeviceStatus.className = 'flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-700/60 text-slate-300 font-mono text-[11px] cursor-pointer hover:border-cyan-400/50 hover:text-cyan-300 transition-colors shrink-0 whitespace-nowrap';
       this.navDeviceStatus.innerHTML = `
-        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-        <span>NO WEARABLE PAIRED &bull; CLICK TO CONNECT</span>
+        <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+        <span class="whitespace-nowrap">NO WEARABLE PAIRED &bull; CLICK TO CONNECT</span>
       `;
     }
 

@@ -45,9 +45,54 @@
   <div class="fixed bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/8 blur-[180px] pointer-events-none -z-10"></div>
 
   <!-- ======================================================== -->
+  <!-- 1. TOP ENTERPRISE TELEMETRY RIBBON                       -->
+  <!-- Aligns Vitals OS, MongoDB, Wearable Device & Theme       -->
+  <!-- Fixed full-width bar: Zero clipping, zero screen overflow -->
+  <!-- ======================================================== -->
+  <div class="top-telemetry-ribbon fixed top-0 left-0 right-0 z-50 h-8 sm:h-9 px-3 sm:px-6 lg:px-8 flex items-center justify-between text-[11px] font-mono text-slate-400 select-none overflow-x-auto no-scrollbar">
+    
+    <!-- Left Cluster: System OS & Local MongoDB State -->
+    <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
+      <!-- Vitals OS Status Beacon -->
+      <div id="os-status-text" class="flex items-center gap-1.5 text-slate-300 shrink-0 whitespace-nowrap">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 beacon-active inline-block mr-1.5 shrink-0"></span>
+        <span class="text-slate-300 font-mono text-[11px] whitespace-nowrap">Vitals OS: <strong class="text-white">REST BASELINE</strong></span>
+      </div>
+
+      <span class="text-slate-700/80">|</span>
+
+      <!-- Local MongoDB Connection Status -->
+      <div id="mongo-sync-indicator" class="flex items-center gap-1.5 text-slate-300 shrink-0 whitespace-nowrap" title="Connected to local MongoDB Community Edition">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-active shrink-0"></span>
+        <span class="text-slate-300 font-mono text-[11px] whitespace-nowrap">MongoDB: <strong class="text-emerald-400">127.0.0.1:27017</strong></span>
+      </div>
+    </div>
+
+    <!-- Right Cluster: Wearable Hardware & Theme Switcher -->
+    <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+      <!-- Wearable Device Connection Status Pill -->
+      <button id="nav-device-status" class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-700/60 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition-all cursor-pointer shrink-0 whitespace-nowrap font-mono text-[11px]" title="Manage wearable connection">
+        <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+        <span class="whitespace-nowrap">NO WEARABLE PAIRED &bull; CLICK TO CONNECT</span>
+      </button>
+
+      <span class="text-slate-700/80">|</span>
+
+      <!-- Black & White / Obsidian Theme Switcher -->
+      <button id="btn-theme-toggle" class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-700/60 text-slate-300 hover:border-cyan-400/50 hover:text-white transition-all cursor-pointer shrink-0 whitespace-nowrap font-mono text-[11px]" title="Toggle MNC Black &amp; White Theme">
+        <span id="theme-toggle-icon">
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        </span>
+        <span id="theme-toggle-label" class="font-semibold whitespace-nowrap">THEME: OBSIDIAN</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ======================================================== -->
   <!-- FLOATING GLASSMORPHIC NAVIGATION BAR (Dribbble 27848306) -->
   <!-- ======================================================== -->
-  <div class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pointer-events-none">
+  <div class="fixed top-10 sm:top-12 left-0 right-0 z-40 px-3 sm:px-6 lg:px-8 pointer-events-none">
     <header class="max-w-7xl mx-auto h-16 sm:h-20 dribbble-pill-nav rounded-2xl sm:rounded-full px-4 sm:px-6 flex items-center justify-between pointer-events-auto transition-all duration-300 relative shadow-2xl">
       
       <!-- 1. LEFT: Brand Identity (Logo + Name + Tag) -->
@@ -98,36 +143,9 @@
         </button>
       </nav>
 
-      <!-- 3. RIGHT: Controls, Status & Call to Action -->
+      <!-- 3. RIGHT: Controls & Call to Action -->
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
         
-        <!-- Live System Status Badge (Desktop) -->
-        <div id="os-status-text" class="hidden 2xl:flex items-center px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[11px] shadow-inner font-mono text-slate-300">
-          <span class="w-2 h-2 rounded-full bg-cyan-400 beacon-active inline-block mr-1.5"></span>
-          <span>Vitals OS: <strong class="text-white">Active</strong></span>
-        </div>
-
-        <!-- Local MongoDB Connection Badge -->
-        <div class="hidden xl:flex items-center px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[10px] font-mono text-slate-400 shadow-inner">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-active mr-1.5"></span>
-          <span>MongoDB: <strong class="text-emerald-300">127.0.0.1:27017</strong></span>
-        </div>
-
-        <!-- Black & White / Obsidian Theme Switcher -->
-        <button id="btn-theme-toggle" class="p-2 sm:px-2.5 sm:py-1.5 rounded-full border border-slate-800 bg-slate-900/80 hover:border-cyan-400/50 font-mono text-[11px] text-slate-300 flex items-center gap-1.5 transition-all shadow-sm" title="Toggle MNC Black &amp; White Theme">
-          <span id="theme-toggle-icon">
-            <svg class="w-3.5 h-3.5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-          </span>
-          <span id="theme-toggle-label" class="hidden md:inline font-semibold">OBSIDIAN</span>
-        </button>
-
-        <!-- Wearable Device Connection Status Pill (Navbar) -->
-        <button id="nav-device-status" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-slate-400 font-mono text-xs hover:border-slate-700 transition-colors shadow-sm" title="Manage wearable connection">
-          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-          <span class="hidden md:inline">NO WEARABLE &bull; CONNECT</span>
-          <span class="md:hidden">PAIR</span>
-        </button>
-
         <!-- Direct Cockpit Access Button (Shown when logged in) -->
         <button id="nav-dashboard-toggle-btn" class="hidden px-3.5 py-1.5 rounded-full border border-cyan-500/50 bg-cyan-950/40 hover:bg-cyan-900/50 text-cyan-300 font-mono text-xs font-semibold items-center gap-1.5 transition-all glow-cyan-sm">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
@@ -173,6 +191,16 @@
         <span>VITALS OS STATUS</span>
         <span class="text-cyan-400 font-semibold">v4.2 ACTIVE &bull; 2,048 Hz</span>
       </div>
+      <div class="grid grid-cols-2 gap-2 pt-1 font-mono text-xs">
+        <button onclick="document.getElementById('nav-device-status').click()" class="py-2 px-3 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 text-left truncate flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span>Pair Wearable</span>
+        </button>
+        <button onclick="document.getElementById('btn-theme-toggle').click()" class="py-2 px-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-left truncate flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+          <span>Switch Theme</span>
+        </button>
+      </div>
       <a href="#hero-section" class="block py-2.5 px-3.5 rounded-xl hover:bg-white/[0.06] text-slate-200 font-medium">Intelligence Overview</a>
       <a href="#telemetry-cockpit-section" class="block py-2.5 px-3.5 rounded-xl hover:bg-white/[0.06] text-slate-200 font-medium">Cockpit Engine</a>
       <a href="#capabilities-grid" class="block py-2.5 px-3.5 rounded-xl hover:bg-white/[0.06] text-slate-200 font-medium">Bento Matrix</a>
@@ -188,7 +216,7 @@
   <!-- ======================================================== -->
   <!-- PUBLIC PREVIEW BANNER (Shown when logged-in user views public) -->
   <!-- ======================================================== -->
-  <div id="public-preview-banner" class="hidden fixed top-24 left-1/2 -translate-x-1/2 z-40 px-5 py-2 rounded-full bg-cyan-950/90 border border-cyan-400 text-cyan-300 font-mono text-xs flex items-center gap-3 shadow-2xl backdrop-blur-md animate-bounce">
+  <div id="public-preview-banner" class="hidden fixed top-28 sm:top-32 left-1/2 -translate-x-1/2 z-40 px-5 py-2 rounded-full bg-cyan-950/90 border border-cyan-400 text-cyan-300 font-mono text-xs flex items-center gap-3 shadow-2xl backdrop-blur-md animate-bounce">
     <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
     <span>You are currently previewing the public marketing website.</span>
     <button id="btn-return-cockpit" class="px-3 py-1 rounded-full bg-cyanCore text-black font-bold hover:bg-cyan-300 transition-all">
@@ -985,7 +1013,7 @@
   <!-- ======================================================== -->
   <!-- VIEW 2: AUTHENTICATED USER COCKPIT DASHBOARD             -->
   <!-- ======================================================== -->
-  <div id="view-dashboard" class="view-container view-hidden pt-24 sm:pt-28 pb-16">
+  <div id="view-dashboard" class="view-container view-hidden pt-32 sm:pt-36 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
       <!-- TOP COCKPIT CONTROL & USER GREETING BAR -->

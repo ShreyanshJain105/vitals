@@ -168,8 +168,8 @@ class VitalsStateController {
       }
 
       this.osStatusBadge.innerHTML = `
-        <span class="w-2 h-2 rounded-full ${dotColor} beacon-active inline-block mr-1.5"></span>
-        <span class="text-slate-300 font-mono text-xs">Vitals OS: <strong class="text-white">${stateLabel}</strong></span>
+        <span class="w-2 h-2 rounded-full ${dotColor} beacon-active inline-block mr-1.5 shrink-0"></span>
+        <span class="text-slate-300 font-mono text-[11px] whitespace-nowrap">Vitals OS: <strong class="text-white">${stateLabel}</strong></span>
       `;
     }
   }
